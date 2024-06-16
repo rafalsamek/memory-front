@@ -17,13 +17,14 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.fetchCategories();
   }
+
   private readonly apiService = inject(ApiService);
+
   categoriesList: Category[] = [];
   showNewCategory = false;
   newCategory = '';
 
   addCategory() {
-    // this.apiService.addCategory(this.newCategory).subscribe(category => this.fetchCategories());
     this.apiService
       .addCategory(this.newCategory)
       .subscribe((category) => this.categoriesList.push(category));
@@ -35,6 +36,8 @@ export class CategoriesComponent implements OnInit {
     this.apiService
       .removeCategory(category.id)
       .subscribe(() => this.fetchCategories());
+
+    // this.categoriesList.splice(i, 1);
   }
 
   fetchCategories() {

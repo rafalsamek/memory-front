@@ -15,7 +15,7 @@ export class ApiService {
     return this.httpClient.get<Category[]>(`${BASE_URL}/categories`);
   }
 
-  getCatgory(categoryId: number): Observable<Category> {
+  getCategory(categoryId: number): Observable<Category> {
     return this.httpClient.get<Category>(
       `${BASE_URL}/categories/${categoryId}`
     );
