@@ -5,6 +5,7 @@ import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {ApiService} from "../../api.service";
 import {Category} from "../../models";
+import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 
 @Component({
   selector: 'app-categories',
@@ -23,7 +24,8 @@ export class CategoriesComponent implements OnInit {
   newCategory = '';
 
   addCategory() {
-    // this.categories.push(this.newCategory);
+    // this.apiService.addCategory(this.newCategory).subscribe(category => this.fetchCategories());
+    this.apiService.addCategory(this.newCategory).subscribe(category => this.categoriesList.push(category));
     this.newCategory = '';
     this.showNewCategory = false;
   }
