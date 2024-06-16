@@ -1,8 +1,5 @@
 <div class="flex flex-col gap-4">
-  <a class="flex items-center gap-2" routerLink="../">
-    <ng-icon name="heroArrowLeft"></ng-icon>
-    Powrót
-  </a>
+  <app-back-link></app-back-link>
 
   <div class="flex justify-between">
     <div class="font-bold">Kategorie</div>
@@ -28,7 +25,9 @@
         class="flex items-center gap-4"
         *ngFor="let c of categoriesList; let i = index"
       >
-        <div class="white-list-item">{{ c.name }}</div>
+        <div [routerLink]="[c.id, 'cards']" class="white-list-item">
+          {{ c.name }}
+        </div>
         <button (click)="removeCategory(c)">
           <ng-icon name="heroNoSymbol"></ng-icon>
         </button>
