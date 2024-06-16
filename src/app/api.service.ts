@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {Card, Category} from './models';
+import { Card, Category } from './models';
 
 const BASE_URL = 'http://localhost:8080';
 
@@ -32,6 +32,8 @@ export class ApiService {
   }
 
   getCards(categoryId: number): Observable<Card[]> {
-    return this.httpClient.get<Card[]>(`${BASE_URL}/categories/${categoryId}/cards`)
+    return this.httpClient.get<Card[]>(
+      `${BASE_URL}/categories/${categoryId}/cards`
+    );
   }
 }
