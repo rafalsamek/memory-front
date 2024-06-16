@@ -10,18 +10,19 @@ import { NgForOf, NgIf } from '@angular/common';
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [BackLinkComponent, NgIcon, NgIf, NgForOf],
+  imports: [BackLinkComponent, NgIcon, NgForOf, NgIf],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css',
 })
 export class CardsComponent implements OnInit {
+  private readonly apiService = inject(ApiService);
+  private readonly route = inject(ActivatedRoute);
+
+  cardsList: Card[] = [];
+
   ngOnInit(): void {
     this.route.params
       .pipe(concatMap((params) => this.apiService.getCards(params['id'])))
       .subscribe((cards) => (this.cardsList = cards));
   }
-  private readonly apiService = inject(ApiService);
-  private readonly route = inject(ActivatedRoute);
-
-  cardsList: Card[] = [];
 }
