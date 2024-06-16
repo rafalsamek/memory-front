@@ -25,7 +25,9 @@
         class="flex items-center gap-4"
         *ngFor="let c of categoriesList; let i = index"
       >
-        <div class="white-list-item">{{ c.name }}</div>
+        <div [routerLink]="[c.id, 'cards']" class="white-list-item">
+          {{ c.name }}
+        </div>
         <button (click)="removeCategory(c)">
           <ng-icon name="heroNoSymbol"></ng-icon>
         </button>
